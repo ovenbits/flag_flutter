@@ -1,39 +1,45 @@
+![Logo](./.github/flag.png)
+
 # flag
-![Pub Version](https://img.shields.io/pub/v/flag?style=flat-square)
-[![Bless](https://img.shields.io/badge/bless-God-brightgreen?style=flat-square)](http://lunagao.github.io/BlessYourCodeTag/)
+[![Pub Version](https://img.shields.io/pub/v/flag?style=flat-square)](https://pub.dev/packages/flag)
+[![Bless](https://img.shields.io/badge/bless-God-brightgreen?style=flat-square)](https://lunagao.github.io/BlessYourCodeTag/)
 
-A flag Flutter package for Android and iOS. Based by https://github.com/dnfield/flutter_svg
+A flag Flutter package for `Android` / `iOS` / `Web`. Based by https://github.com/dnfield/flutter_svg .
 
-## ScreenShot
+## Screenshot
 ![Screenshot](./github/image.png)
+![Screenshot](./github/image_web.jpg)
 
-## svg source
-* Flag list came from UN members. [UN Web Site](https://www.un.org/en/member-states/index.html) 
-* A lot of flag svg files came from wike. such as [Antigua and Barbuda](https://commons.wikimedia.org/wiki/File:Flag_of_Antigua_and_Barbuda.svg)
-* Some flag svg files came from [Countryflags](https://www.countryflags.com/en/).
+## Svg sources
+* All flags came from https://github.com/lipis/flag-icons/releases/tag/v4.1.4
 
-fetch data :python file is `fetch_data/main.py`
-
-> Update time: 2020-04-21 23:22:58
-
-## Marge from 2.0.X to 3
-Replace `Flags.getFlag(country:` to `Flag(`.   :)
+Thanks the great project [flag-icons](https://github.com/lipis/flag-icons).
 
 ## Flag list
 
-List is [un_members.txt](./un_members.txt)
+ISO 3166-1-alpha-2 Flags
+
+Note: 
 
 Organisations
-* `eu` European Union. Modify by [art-decor for European Union](https://www.art-decor.org/mediawiki/index.php?title=File:Flag_eu.svg)
+* `eu` European Union.
+
+Disputed territories
+* `hk` Hong Kong. Special Administrative Region of China.
+* `mo` Macau. Special Administrative Region of China.
+* `eh` Western Sahara. Claimed by Morocco.
+* `tw` Taiwan. Claimed by China.
+
+Undisputed territories which are non-UN state
+* `va` Vatican City. Govern by the Holy See.
 
 ## How to use
 
-`Flag(COUNTRY_CODE, height: HEIGHT, width: WIDTH),`
+`Flag.fromCode(FlagsCode.COUNTRY_CODE, height: HEIGHT, width: WIDTH),`
+`Flag.fromString(COUNTRY_CODE, height: HEIGHT, width: WIDTH),`
+`Flags.fromCode([FlagsCode.GB, FlagsCode.US], height: 100, width: 100 * 4 / 3),`
 
 Such as
-* `Flag('AD', height: 100, width: null)`
-* `Flag('AD', height: null, width: null)`
-* `Flag('AD', height: 10, width: 100, fit: BoxFit.fill)`
-
-## Bugs
-* `brazilian` (br) flag, you can see that the letters are still a bit abnormal.
+* `Flag.fromCode(FlagsCode.AD, height: 100, width: null)`
+* `Flag.fromString('AD', height: null, width: null)`
+* `Flag.fromString('AD', height: 10, width: 100, fit: BoxFit.fill)`
