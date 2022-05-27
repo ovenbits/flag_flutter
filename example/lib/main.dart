@@ -121,8 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class FlagPicker extends StatefulWidget {
-  const FlagPicker({Key? key, this.width, this.height, this.preCache = false})
-      : super(key: key);
+  const FlagPicker({Key? key, this.width, this.height, this.preCache = false}) : super(key: key);
 
   final double? width;
   final double? height;

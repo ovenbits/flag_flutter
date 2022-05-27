@@ -101,8 +101,7 @@ class Flag extends StatelessWidget {
   Widget build(BuildContext context) {
     String countryName = country.toLowerCase();
     if (this.countryCode != FlagsCode.NULL) {
-      countryName =
-          EnumToString.convertToString(this.countryCode).toLowerCase();
+      countryName = EnumToString.convertToString(this.countryCode).toLowerCase();
     }
 
     String assetName = 'packages/flag/res/4x3/$countryName.svg';
