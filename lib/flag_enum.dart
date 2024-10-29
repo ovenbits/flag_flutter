@@ -138,6 +138,7 @@ enum FlagsCode {
   JM,
   JO,
   JP,
+  KAA,
   KE,
   KG,
   KH,
