@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Flags.fromCode(
                 [
                   FlagsCode.GB,
-                  FlagsCode.US,
+                  FlagsCode.CN,
                 ],
                 height: 100,
                 width: 100 * 4 / 3,
@@ -110,7 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 FlagPicker(
                   width: 50,
                   height: 300,
-                  preCache: displayFlagPicker!,
                 ),
             ],
           ),
@@ -121,11 +120,14 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class FlagPicker extends StatefulWidget {
-  const FlagPicker({Key? key, this.width, this.height, this.preCache = false}) : super(key: key);
+  const FlagPicker({
+    Key? key,
+    this.width,
+    this.height,
+  }) : super(key: key);
 
   final double? width;
   final double? height;
-  final bool preCache;
 
   @override
   _FlagPicker createState() => _FlagPicker();
