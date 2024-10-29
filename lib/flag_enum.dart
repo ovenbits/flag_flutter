@@ -326,6 +326,7 @@ const List<String> baseFlagsCode = [
   'jm',
   'jo',
   'jp',
+  'kaa',
   'ke',
   'kg',
   'kh',
