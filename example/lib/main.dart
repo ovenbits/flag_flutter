@@ -1,11 +1,14 @@
 import 'package:example/restart_widget.dart';
 import 'package:flag/flag.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(RestartWidget(child: MyApp()));
+void main() => runApp(const RestartWidget(child: MyApp()));
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,18 +16,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -41,17 +44,17 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Flag.fromCode(
+              const Flag.fromCode(
                 FlagsCode.KI,
                 height: 100,
               ),
-              Flag.fromCode(
+              const Flag.fromCode(
                 FlagsCode.AD,
                 height: 10,
                 width: 100,
                 fit: BoxFit.fill,
               ),
-              Flag.fromCode(
+              const Flag.fromCode(
                 FlagsCode.AD,
                 height: 50,
                 width: 50,
@@ -60,14 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: 25,
               ),
               Flags.fromCode(
-                [
+                const [
                   FlagsCode.GB,
                   FlagsCode.CN,
                 ],
                 height: 100,
                 width: 100 * 4 / 3,
               ),
-              Flag.fromString(
+              const Flag.fromString(
                 'ACC',
                 height: 10,
                 width: 100,
@@ -75,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 replacement: Text('ACC not found'),
               ),
               if (Flag.flagsCode.contains('AF'.toLowerCase()))
-                Flag.fromString(
+                const Flag.fromString(
                   'af',
                   height: 10,
                   width: 100,
@@ -90,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               displayFlagPicker = false;
                             })
                         : null,
-                    child: Text('no preCache'),
+                    child: const Text('no preCache'),
                   ),
                   ElevatedButton(
                     onPressed: displayFlagPicker == null
@@ -98,16 +101,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               displayFlagPicker = true;
                             })
                         : null,
-                    child: Text('preCache'),
+                    child: const Text('preCache'),
                   ),
                   ElevatedButton(
                     onPressed: () => RestartWidget.restartApp(context),
-                    child: Text('restart'),
+                    child: const Text('restart'),
                   ),
                 ],
               ),
               if (displayFlagPicker != null)
-                FlagPicker(
+                const FlagPicker(
                   width: 50,
                   height: 300,
                 ),
@@ -121,16 +124,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class FlagPicker extends StatefulWidget {
   const FlagPicker({
-    Key? key,
+    super.key,
     this.width,
     this.height,
-  }) : super(key: key);
+  });
 
   final double? width;
   final double? height;
 
   @override
-  _FlagPicker createState() => _FlagPicker();
+  State<FlagPicker> createState() => _FlagPicker();
 }
 
 class _FlagPicker extends State<FlagPicker> {
@@ -154,7 +157,7 @@ class _FlagPicker extends State<FlagPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: widget.height,
       width: widget.width,
       child: CupertinoPicker.builder(
@@ -167,7 +170,9 @@ class _FlagPicker extends State<FlagPicker> {
         diameterRatio: 0.8,
         onSelectedItemChanged: (value) {
           setState(() {
-            print(value);
+            if (kDebugMode) {
+              print(value);
+            }
           });
         },
         itemBuilder: (context, index) => Center(
